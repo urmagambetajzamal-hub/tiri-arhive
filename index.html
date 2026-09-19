@@ -33,11 +33,8 @@ background:#f5efe3;text-align:center;font-family:Arial">
 
 <script>
 function speak(){
- let x=new SpeechSynthesisUtterance(
- "Бұл архивтік фотосурет Қызылорданың 50 жылдан астам уақыт бұрынғы келбетін көрсетеді."
- );
- x.lang="kk-KZ";
- speechSynthesis.speak(x);
+  let audio = new Audio("archive_kz.mp3");
+  audio.play();
 }
 
 function show(){
