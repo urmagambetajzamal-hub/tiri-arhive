@@ -16,7 +16,11 @@ background:#f5efe3;text-align:center;font-family:Arial">
 <p>Бұл архивтік фотосурет Қызылорданың 50 жылдан астам
 уақыт бұрынғы қалалық келбетін көрсетеді.</p>
 
-<button onclick="speak()">🔊 Тарихты тыңдау</button>
+<audio id="archiveAudio" src="archive_kz.mp3?v=3" preload="auto"></audio>
+
+<button onclick="document.getElementById('archiveAudio').play()">
+🔊 Тарихты тыңдау
+</button>
 
 <h2>⏳ БҰРЫН ↔ ҚАЗІР</h2>
 
@@ -80,9 +84,5 @@ function check(n, correct){
 
     document.getElementById("score").innerHTML =
     "Нәтиже: " + score + " / 5";
-}
-    function speak(){
-    const audio = new Audio("archive_kz.mp3?v=2");
-    audio.play();
 }
 </script>
