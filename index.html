@@ -27,26 +27,58 @@ background:#f5efe3;text-align:center;font-family:Arial">
 <button onclick="show()">🔎 Өзгерістерді көрсету</button>
 <p id="info"></p>
 
-<h2>🧠 АРХИВ ДЕТЕКТИВІ</h2>
-<button onclick="answer()">Қаланың өткенін зерттеу</button>
-<p id="ans"></p>
+<h2>🧠 АРХИВ ЗЕРТТЕУШІСІ</h2>
+<p><b>Архивтік материалды зерттеп, 5 сұраққа жауап бер.</b></p>
+
+<div style="text-align:left; max-width:700px; margin:auto">
+
+<p><b>1. Архивтік фотода қандай тарихи орын бейнеленген?</b></p>
+<button onclick="check(1,true)">Қызылорда қаласының Орталық алаңы</button>
+<button onclick="check(1,false)">Теміржол вокзалы</button>
+<p id="q1"></p>
+
+<p><b>2. Кеңес дәуірінде бұл алаң қалай аталған?</b></p>
+<button onclick="check(2,false)">Абай алаңы</button>
+<button onclick="check(2,true)">В. И. Ленин атындағы алаң</button>
+<p id="q2"></p>
+
+<p><b>3. Фотодағы негізгі ғимарат қандай қызмет атқарған?</b></p>
+<button onclick="check(3,true)">Облыстық партия комитетінің ғимараты</button>
+<button onclick="check(3,false)">Теміржол басқармасы</button>
+<p id="q3"></p>
+
+<p><b>4. Ескі және қазіргі фотоларды салыстырғанда қандай өзгеріс байқалады?</b></p>
+<button onclick="check(4,true)">Алаңның сәулеттік келбеті мен қоғамдық кеңістігі өзгерген</button>
+<button onclick="check(4,false)">Ешқандай өзгеріс болмаған</button>
+<p id="q4"></p>
+
+<p><b>5. Архивтік фотосуретті зерттеудің маңызы неде?</b></p>
+<button onclick="check(5,false)">Тек суреттің сапасын бағалау</button>
+<button onclick="check(5,true)">Қаланың тарихи өзгерістерін зерттеу</button>
+<p id="q5"></p>
+
+</div>
+
+<h3 id="score">Нәтиже: 0 / 5</h3>
 
 <script>
-function speak(){
-  let audio = new Audio("archive_kz.mp3");
-  audio.play();
-}
+let score = 0;
+let answered = [false,false,false,false,false];
 
-function show(){
- document.getElementById("info").innerHTML=
- "🏛️ Ғимараттар өзгерген.<br>🌳 Алаң абаттандырылған.<br>🗿 Бұрынғы ескерткіш қазіргі көріністе жоқ.";
-}
+function check(n, correct){
+    if(answered[n-1]) return;
+    answered[n-1] = true;
 
-function answer(){
- document.getElementById("ans").innerHTML=
- "✅ Дұрыс! Сен архив детективісің!";
+    if(correct){
+        document.getElementById("q"+n).innerHTML =
+        "✅ Дұрыс жауап!";
+        score++;
+    } else {
+        document.getElementById("q"+n).innerHTML =
+        "❌ Қайта ойланып көр.";
+    }
+
+    document.getElementById("score").innerHTML =
+    "Нәтиже: " + score + " / 5";
 }
 </script>
-
-</body>
-</html>
